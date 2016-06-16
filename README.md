@@ -2,17 +2,37 @@
 
 Go port of [Panic's iTunes 11](https://www.panic.com/blog/itunes-11-and-colors/) album art [color algorithm](https://github.com/panicinc/ColorArt).
 
-Looks like iTunes 12 uses a blurred version of the album cover now.  Here's a quick repro:
+## LICENSE
 
-    gm mogrify -size 320x320 -format blur.jpg -blur 240x240 album.jpg
+(c) Marc Weistroff 2016
 
-To view a demo:
+Original Go port
 
-    $ go run main.go covers.html ~/album/*.jpg > index.html
+(c) Steve Spencer 2015 (https://github.com/sspencer/colorart)
 
-To speed things up, this code makes use of [GIFT](https://github.com/disintegration/gift) to resize images.  Also, the file "pixel.go"
-from that project was copied directly into the project to make getting
-pixels faster.
+Original code (https://github.com/panicinc/ColorArt) and license:
 
-    go get -u github.com/disintegration/gift
+Copyright (C) Panic Inc. Code by Wade Cosgrove. All rights reserved.
 
+Redistribution and use, with or without modification, are permitted
+provided that the following conditions are met:
+
+- Redistributions must reproduce the above copyright notice, this list of
+  conditions and the following disclaimer in the documentation and/or
+  other materials provided with the distribution.
+
+- Neither the name of Panic Inc nor the names of its contributors may be
+  used to endorse or promote works derived from this software without
+  specific prior written permission from Panic Inc.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL PANIC INC BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.

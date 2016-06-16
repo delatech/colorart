@@ -11,6 +11,8 @@ var (
 
 	// WhiteColor convenience
 	WhiteColor = Color{1, 1, 1, true}
+
+	ContrastRatio = 1.6
 )
 
 // Color holds rgb components of a color
@@ -81,12 +83,11 @@ func (c Color) IsContrastingColor(d Color) bool {
 		contrast = (fLum + 0.05) / (bLum + 0.05)
 	}
 
-	return contrast > 1.6
+	return contrast > ContrastRatio
 }
 
 // ColorWithMinimumSaturation tries to return a less saturated color
 func (c Color) ColorWithMinimumSaturation(minSaturation float64) Color {
-
 	h, s, v := c.HSV()
 	if s < minSaturation {
 		return HSVToColor(h, minSaturation, v)
