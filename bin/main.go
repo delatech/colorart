@@ -30,17 +30,19 @@ var useBlur bool = true
 func init() {
 	flag.IntVar(&resizeThreshold, "resize-threshold", resizeThreshold, "Resize threshold")
 	flag.IntVar(&resizeSize, "resize-size", resizeSize, "Resize size")
+	flag.Float64Var(&colorart.ContrastRatio, "contrast", colorart.ContrastRatio, "Mininum contrast to have between 2 colors (use 2 for accessibility compliance)")
 	flag.Float64Var(&blurSigma, "blur-sigma", blurSigma, "Blur Sigma")
 	flag.BoolVar(&useBlur, "blur", useBlur, "Blug picture (like iTunes12 do)")
 }
 
 func main() {
 	flag.Parse()
-	if len(os.Args) != 2 {
+	args := flag.Args()
+	if len(args) != 1 {
 		log.Fatalf("%s img\n", os.Args[0])
 	}
 
-	palette := analyzeFile(os.Args[1])
+	palette := analyzeFile(args[0])
 	b, err := json.Marshal(palette)
 	if err != nil {
 		log.Fatalln(err)
